@@ -23,7 +23,7 @@ def get_conn():
         conn = psycopg.connect(_get_database_url(), row_factory=dict_row)
     except Exception as e:
         st.error(f"Postgres connection failed: {type(e).__name__}: {e}")
-        raise
+        st.stop()
 
     try:
         yield conn
